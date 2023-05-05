@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.box.box.dao.BoxInformationDao">
+        <update id="activateBox">
+                update `box_information`
+                set `box_state` = 1
+                WHERE `box_id` = #{boxId}
+
+        </update>
+
+
+        <select id="getAll" resultType="com.example.box.box.entity.BoxInformationEntity">
+                SELECT * FROM `box_information`
+                limt #{currentPage},#{pageSize}
+        </select>
+
+        <select id="boxNum" resultType="java.lang.Integer">
+                SELECT COUNT(*) FROM `box_information`
+        </select>
+
+
+</mapper>
