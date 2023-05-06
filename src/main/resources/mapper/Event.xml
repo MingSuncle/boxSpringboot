@@ -14,4 +14,9 @@
                 #{currentPage},#{pageSize}
 
         </select>
+
+    <select id="eventNum" resultType="java.lang.Integer">
+            SELECT COUNT(*)
+            FROM `aievent`
+    </select>
 </mapper>

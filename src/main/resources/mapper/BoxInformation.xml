@@ -11,7 +11,7 @@
 
         <select id="getAll" resultType="com.example.box.box.entity.BoxInformationEntity">
                 SELECT * FROM `box_information`
-                limt #{currentPage},#{pageSize}
+                limit #{currentPage},#{pageSize}
         </select>
 
         <select id="boxNum" resultType="java.lang.Integer">

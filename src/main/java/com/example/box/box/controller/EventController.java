@@ -8,10 +8,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,7 +31,17 @@ public class EventController {
         R r = R.ok();
         Integer currentPageTemp = (currentPage - 1) * pageSize;
         List<EventEntity> result = eventService.getEvent(currentPageTemp,pageSize);
+        Integer total = eventService.eventNum();
         r.addData("result",result);
+        r.addData("total",total);
+        return r;
+    }
+
+    @ApiOperation("新增事件")
+    @PostMapping("/addEvent")
+    public R addEvent(@RequestBody EventEntity event){
+        R r = R.ok();
+        eventService.save(event);
         return r;
     }
 }

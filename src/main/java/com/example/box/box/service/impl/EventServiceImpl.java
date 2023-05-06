@@ -37,5 +37,9 @@ public class EventServiceImpl extends
         return baseMapper.getEvent(currentPage, pageSize);
     }
 
+    @Override
+    public Integer eventNum() {
+        return baseMapper.eventNum();
+    }
 
 }
