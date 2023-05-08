@@ -42,4 +42,9 @@ public class EventServiceImpl extends
         return baseMapper.eventNum();
     }
 
+    @Override
+    public Integer delete(Integer eventId) {
+        return baseMapper.deleteEvent(eventId);
+    }
+
 }

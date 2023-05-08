@@ -44,4 +44,20 @@ public class EventController {
         eventService.save(event);
         return r;
     }
+
+    @ApiOperation("删除事件")
+    @GetMapping("/deleteEvent")
+    public R deleteEvent(@RequestParam(value = "event_id")Integer eventId){
+        R r = R.ok();
+        eventService.delete(eventId);
+        return r;
+    }
+
+    @ApiOperation("修改事件")
+    @PostMapping("/editEvent")
+    public R editEvent(@RequestBody EventEntity eventEntity){
+        R r = R.ok();
+        eventService.updateById(eventEntity);
+        return r;
+    }
 }

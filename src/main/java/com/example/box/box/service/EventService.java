@@ -14,4 +14,6 @@ public interface EventService extends IMppService<EventEntity>{
     List<EventEntity> getEvent(Integer currentPage,Integer pageSize);
 
     Integer eventNum();
+
+    Integer delete(Integer eventId);
 }

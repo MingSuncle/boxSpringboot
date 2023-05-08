@@ -18,4 +18,6 @@ public interface EventDao extends MppBaseMapper<EventEntity> {
     List<EventEntity> getEvent(@Param(value = "currentPage") Integer currentPage, @Param(value="pageSize")Integer pageSize);
 
     Integer eventNum();
+
+    Integer deleteEvent(Integer eventId);
 }
