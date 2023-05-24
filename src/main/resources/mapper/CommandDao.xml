@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.box.box.dao.CommandDao">
+    <resultMap id="commandMap" type="com.example.box.box.entity.CommandEntity">
+        <result property="commandId" column="command_id"/>
+        <result property="commandName" column="command_name"/>
+        <result property="commandDescription" column="command_description"/>
+        <result property="commandDetails" column="command_details"/>
+        <result property="commandCreateTime" column="command_create_time"/>
+        <result property="commandCreator" column="command_creator"/>
+        <result property="commandCreatorName" column="name"/>
+    </resultMap>
+
+
+        <select id="getAll" resultMap="commandMap">
+            SELECT t1.*,t2.name AS "name"
+            FROM `command` `t1`,`user` `t2`
+            WHERE t1.command_creator = t2.user_id
+            limit    #{currentPage},#{pageSize}
+
+        </select>
+
+
+        <select id="commandNum" resultType="java.lang.Integer">
+            SELECT COUNT(*)
+            FROM `command`
+
+        </select>
+
+         <delete id="deleteCommand">
+           DELETE
+           FROM `command`
+           WHERE `command_id` = #{commandId}
+         </delete>
+</mapper>
