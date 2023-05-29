@@ -3,6 +3,7 @@ package com.example.box.box.dao;
 
 
 import com.example.box.box.entity.BoxInformationEntity;
+import com.example.box.box.form.BoxModelForm;
 import com.github.jeffreyning.mybatisplus.base.MppBaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -41,5 +42,10 @@ public interface BoxInformationDao extends MppBaseMapper<BoxInformationEntity> {
      */
     Integer boxNum();
 
-
+    /***
+     * 获取盒子对应模型消息(目前仅考虑一个盒子搭载一个模型),模型备注、版本信息为数据库中盒子对应当前版本模型信息
+     * @param boxId
+     * @return BoxModelForm
+     */
+    BoxModelForm getBoxModelInformation(String boxId);
 }

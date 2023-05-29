@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.box.project.dao.ProjectDao">
-
+<resultMap id="userMap" type="com.example.box.project.form.UserForm">
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="name"/>
+</resultMap>
+        <insert id="setProjectUser">
+                INSERT INTO `user_project`
+                VALUES
+                <foreach collection="userList" item="user" separator=",">
+                    (#{user},#{projectId})
+                </foreach>
+        </insert>
 
         <select id="getAll" resultType="com.example.box.project.entity.ProjectEntity">
                 SELECT *
@@ -11,8 +21,21 @@
         </select>
 
         <select id="projectNum" resultType="java.lang.Integer">
-                SELECT CONUT(*)
+                SELECT COUNT(*)
                 FROM `project`
+        </select>
+
+        <select id="getProjectsByUserId" resultMap="userMap">
+                SELECT `project_id`
+                FROM `user_project`
+                WHERE `user_id` = #{userId}
+        </select>
+
+        <select id="getUsersByProject" resultMap="userMap">
+                SELECT t1.`user_id`,t2.`name`
+                FROM `user_project` t1,`user` t2
+                WHERE `project_id` = #{projectId}
+                AND t2.user_id = t1.user_id
         </select>
 
 

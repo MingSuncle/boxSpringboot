@@ -3,6 +3,7 @@ package com.example.box.box.service.impl;
 
 import com.example.box.box.dao.BoxInformationDao;
 import com.example.box.box.entity.BoxInformationEntity;
+import com.example.box.box.form.BoxModelForm;
 import com.example.box.box.service.BoxInformationService;
 import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
 import com.github.jeffreyning.mybatisplus.service.MppServiceImpl;
@@ -48,6 +49,10 @@ public class BoxInformationServiceImpl extends
         return baseMapper.boxNum();
     }
 
+    @Override
+    public BoxModelForm getBoxModelInformation(String boxId) {
+        return baseMapper.getBoxModelInformation(boxId);
+    }
 
 
 }

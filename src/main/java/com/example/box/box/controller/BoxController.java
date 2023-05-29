@@ -2,6 +2,7 @@ package com.example.box.box.controller;
 
 
 import com.example.box.box.entity.BoxInformationEntity;
+import com.example.box.box.form.BoxModelForm;
 import com.example.box.box.service.BoxInformationService;
 import com.example.box.box.service.EventService;
 import com.example.box.utils.R;
@@ -85,5 +86,13 @@ public class BoxController {
         return r;
     }
 
-
+    @ApiOperation("获取盒子模型配置信息")
+    @GetMapping("/getBoxModelInformation")
+    public R getBoxModelInformation(@RequestParam(value = "box_id")String boxId)
+    {
+        R r = R.ok();
+        BoxModelForm result = boxInformationService.getBoxModelInformation(boxId);
+        r.addData("result",result);
+        return r;
+    }
 }

@@ -2,6 +2,7 @@ package com.example.box.box.service;
 
 
 import com.example.box.box.entity.BoxInformationEntity;
+import com.example.box.box.form.BoxModelForm;
 import com.github.jeffreyning.mybatisplus.service.IMppService;
 import io.swagger.models.auth.In;
 
@@ -16,4 +17,5 @@ public interface BoxInformationService extends IMppService<BoxInformationEntity>
 
     Integer boxNum();
 
+    BoxModelForm getBoxModelInformation(String boxId);
 }
